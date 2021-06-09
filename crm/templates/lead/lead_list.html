@@ -1,0 +1,44 @@
+{% load static %}
+
+<html>
+   <head>
+       <link rel="stylesheet" href="{% static 'main.css' %}">
+   </head>
+    <body>
+        <b>
+            <a href="{% url 'lead:lead_create' %}">
+                Create lead
+            </a>
+            
+        </b>
+        <form id="search-form" autocomplete="off" method="post">
+            {% csrf_token %}
+             <input type="text" id="search-input" placeholder="search">
+
+        </form>
+        <div class="result-card" id="result-box">
+
+        </div>
+
+        <hr>
+        <p>
+            {% for lead in leads %}
+
+                <a href="{% url 'lead:lead_details' lead.pk %}">
+                    {{ lead.first_name }} {{ lead.last_name }}
+                </a>
+                
+                <small>{{ lead.age }}</small>
+                <br>
+                
+            {% endfor %}
+            
+        </p>
+
+        <script src="{% static 'main.js' %}" type="text/javascript"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <b> <a href="{% url 'lead:lead' %}">previous page</a> </b>
+        <hr>
+        <p>
+            {{ lead.first_name }}
+            
+        </p>
+        <hr>
+        <a href="{% url 'lead:lead_update' lead.pk %}">Update</a>
+        <a href="{% url 'lead:lead_delete' lead.pk %}">Delete</a>
+            
+    </body>
+</html>

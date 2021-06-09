@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <b> <a href="{% url 'lead:lead' %}">previous page</a> </b>
+        <hr>
+        <b>
+            Are you share Delete this lead 
+        </b>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        
+        
+    </body>
+</html>
