@@ -7,6 +7,9 @@ from django.views.generic import ListView,DetailView,CreateView,UpdateView,Delet
 from django.urls import reverse
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+from asgiref.sync import async_to_sync
+import time
+
 
 
 # Create your views here.
@@ -72,11 +75,25 @@ def search_results(request):
 
 
 def lead(request):
+    start_time = time.time()
     leads = Lead.objects.all()
+    total = (time.time()-start_time)
+    print(total)
     context = {
         'leads': leads
     }
-    return render(request,'lead_home.html',context)
+    return render(request,'sync.html',context)
+
+@async_to_sync
+async def lead_async(request):
+    start_time = time.time()
+    leads = Lead.objects.all()
+    total = (time.time()-start_time)
+    print(total)
+    context = {
+        'leads': leads
+    }
+    return render(request,'async.html',context)
 
 
 def lead_details(request,pk):

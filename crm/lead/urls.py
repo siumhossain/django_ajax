@@ -15,6 +15,8 @@ urlpatterns = [
 
 
     path('lead/search/', views.search_results,name='search_results'),
+    path('sync/', views.lead,name='sync'),
+    path('async/', views.lead_async,name='async'),
     
 
     
